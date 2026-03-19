@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <RootNamespace>StarWorks.NativeAssets</RootNamespace>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+	</PropertyGroup>
+
+  <PropertyGroup>
+    <PackageProjectUrl>https://github.com/AstralPlaneGames/StarWorks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AstralPlaneGames/StarWorks.NativeAssets</RepositoryUrl>
+    <Authors>ryancheung</Authors>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>UWP wrapper of native libs for StarWorks.</Description>
+    <PackageTags>starworks;</PackageTags>
+    <PackageId>StarWorks.NativeAssets.Uwp</PackageId>
+    <Copyright>Copyright 2026 StarWorks</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="runtimes\win-x64\dav1dfile.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+    <None Include="runtimes\win-x64\FAudio.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+    <None Include="runtimes\win-x64\SDL3.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+    <None Include="runtimes\win-x64\Wellspring.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+  </ItemGroup>
+
+</Project>

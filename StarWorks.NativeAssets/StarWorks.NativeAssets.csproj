@@ -1,0 +1,112 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net9.0;net9.0-windows;net9.0-android;net9.0-ios;net9.0-tvos</TargetFrameworks>
+    <RootNamespace>StarWorks.NativeAssets</RootNamespace>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+	</PropertyGroup>
+
+  <PropertyGroup>
+    <PackageProjectUrl>https://github.com/AstralPlaneGames/StarWorks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AstralPlaneGames/StarWorks.NativeAssets</RepositoryUrl>
+    <Authors>ryancheung</Authors>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>.NET 9 wrapper of native libs for StarWorks.</Description>
+    <PackageTags>starworks;net9</PackageTags>
+    <PackageId>StarWorks.NativeAssets</PackageId>
+    <Copyright>Copyright 2026 ryancheung</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net9.0-ios' or '$(TargetFramework)' == 'net9.0-tvos'">
+    <IsBindingProject>true</IsBindingProject>
+    <NoBindingEmbedding>false</NoBindingEmbedding>
+    <SupportedOSPlatformVersion>12.2</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios' or '$(TargetFramework)' == 'net9.0-tvos'">
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="runtimes\dav1dfile\linux-x64\libdav1dfile.so.0" Pack="true" PackagePath="runtimes\linux-x64\native\"/>
+    <None Include="runtimes\FAudio\linux-x64\libFAudio.so.0" Pack="true" PackagePath="runtimes\linux-x64\native\"/>
+    <None Include="runtimes\SDL3\linux-x64\libSDL3.so.0" Pack="true" PackagePath="runtimes\linux-x64\native\"/>
+    <None Include="runtimes\Wellspring\linux-x64\libWellspring.so.1" Pack="true" PackagePath="runtimes\linux-x64\native\"/>
+
+    <None Include="runtimes\dav1dfile\osx\libdav1dfile.1.dylib" Pack="true" PackagePath="runtimes\osx\native\"/>
+    <None Include="runtimes\FAudio\osx\libFAudio.0.dylib" Pack="true" PackagePath="runtimes\osx\native\"/>
+    <None Include="runtimes\SDL3\osx\libSDL3.0.dylib" Pack="true" PackagePath="runtimes\osx\native\"/>
+    <None Include="runtimes\Wellspring\osx\libWellspring.1.dylib" Pack="true" PackagePath="runtimes\osx\native\"/>
+
+    <None Include="runtimes\dav1dfile\win-x64\dav1dfile.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+    <None Include="runtimes\FAudio\win-x64\FAudio.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+    <None Include="runtimes\SDL3\win-x64\SDL3.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+    <None Include="runtimes\Wellspring\win-x64\Wellspring.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
+    <EmbeddedNativeLibrary Include="runtimes\dav1dfile\android\arm64-v8a\libdav1dfile.so" Link="libs\arm64-v8a\libdav1dfile.so" />
+    <EmbeddedNativeLibrary Include="runtimes\FAudio\android\arm64-v8a\libFAudio.so" Link="libs\arm64-v8a\libFAudio.so" />
+    <EmbeddedNativeLibrary Include="runtimes\SDL3\android\arm64-v8a\libSDL3.so" Link="libs\arm64-v8a\libSDL3.so" />
+    <EmbeddedNativeLibrary Include="runtimes\Wellspring\android\arm64-v8a\libWellspring.so" Link="libs\arm64-v8a\libWellspring.so" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
+    <NativeReference Include="runtimes\dav1dfile\ios\libdav1dfile.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    <NativeReference Include="runtimes\FAudio\ios\libFAudio.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    <NativeReference Include="runtimes\SDL3\ios\libSDL3.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>AVFoundation AudioToolbox CoreGraphics Metal QuartzCore GameController CoreMotion MobileCoreServices ImageIO CoreHaptics CoreBluetooth CoreMedia AVFAudio CoreVideo</Frameworks>
+    </NativeReference>
+    <NativeReference Include="runtimes\Wellspring\ios\libWellspring.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0-tvos'">
+    <NativeReference Include="runtimes\dav1dfile\tvos\libdav1dfile.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    <NativeReference Include="runtimes\FAudio\tvos\libFAudio.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+    <NativeReference Include="runtimes\SDL3\tvos\libSDL3.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>AVFoundation AudioToolbox CoreGraphics Metal QuartzCore GameController CoreBluetooth MobileCoreServices ImageIO CoreHaptics CoreMedia AVFAudio CoreVideo</Frameworks>
+    </NativeReference>
+    <NativeReference Include="runtimes\Wellspring\tvos\libWellspring.a">
+      <Kind>Static</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+  </ItemGroup>
+</Project>

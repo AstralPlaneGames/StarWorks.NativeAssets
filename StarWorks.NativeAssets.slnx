@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="StarWorks.NativeAssets.Uwp/StarWorks.NativeAssets.Uwp.csproj" />
+  <Project Path="StarWorks.NativeAssets/StarWorks.NativeAssets.csproj" />
+</Solution>

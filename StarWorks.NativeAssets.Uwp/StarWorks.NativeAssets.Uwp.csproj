@@ -30,6 +30,9 @@
     <None Include="runtimes\win-x64\FAudio.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
     <None Include="runtimes\win-x64\SDL3.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
     <None Include="runtimes\win-x64\Wellspring.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+    <None Include="runtimes\win-x64\dxcompiler.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+    <None Include="runtimes\win-x64\dxil.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
+    <None Include="runtimes\win-x64\SDL3_shadercross.dll" Pack="true" PackagePath="runtimes\win-x64\native\"/>
   </ItemGroup>
 
 </Project>
